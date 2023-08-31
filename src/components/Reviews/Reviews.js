@@ -8,6 +8,7 @@ const Reviews = () => {
   const [reviewsList, setReviewsList] = useState([]);
 
   useEffect(() => {
+    if (!movieId) return;
     axios
       .get(`${BASE_URL}movie/${movieId}/reviews?api_key=${API_KEY}`)
       .then(({ data }) => setReviewsList(data.results))

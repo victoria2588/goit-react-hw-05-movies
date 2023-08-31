@@ -7,7 +7,6 @@ export const NavList = styled.ul`
 `;
 export const Container = styled.div`
   max-width: 900px;
-  background-color: #fac2e9;
   margin: 0 auto;
   padding: 0 20px;
 `;
