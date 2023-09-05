@@ -2,6 +2,12 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { BASE_URL, API_KEY } from 'api';
+import {
+  ItemReviews,
+  ListReviews,
+  TextReviews,
+  TitleReviews,
+} from './Reviews.styled';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -17,18 +23,18 @@ const Reviews = () => {
 
   return (
     <>
-      <ul>
+      <ListReviews>
         {reviewsList.length > 0 ? (
           reviewsList.map(i => (
-            <li key={i.id}>
-              <b>Author: {i.author.toUpperCase()}</b>
-              <p>{i.content}</p>
-            </li>
+            <ItemReviews key={i.id}>
+              <TitleReviews>Author: {i.author.toUpperCase()}</TitleReviews>
+              <TextReviews>{i.content}</TextReviews>
+            </ItemReviews>
           ))
         ) : (
           <p>We don't have any reviews for this movie.</p>
         )}
-      </ul>
+      </ListReviews>
     </>
   );
 };

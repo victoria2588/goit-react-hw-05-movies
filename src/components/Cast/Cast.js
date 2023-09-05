@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { BASE_URL, API_KEY } from 'api';
-import { ListActors } from './Cast.styled';
+import { ListActors, ItemActors, TextActors, ImgActors } from './Cast.styled';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -24,19 +24,18 @@ const Cast = () => {
     <>
       <ListActors>
         {actorList.map(actor => (
-          <li key={actor.id}>
-            <img
+          <ItemActors key={actor.id}>
+            <ImgActors
               src={
                 actor.profile_path
                   ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
                   : defaultImg
               }
-              width="100px"
               alt={actor.name}
             />
-            <p>{actor.name}</p>
-            <p>Character: {actor.character}</p>
-          </li>
+            <TextActors>{actor.name}</TextActors>
+            <TextActors>{actor.character}</TextActors>
+          </ItemActors>
         ))}
       </ListActors>
     </>
